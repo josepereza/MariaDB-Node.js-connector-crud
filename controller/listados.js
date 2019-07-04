@@ -9,6 +9,11 @@ var db = mariadb.createConnection({
     database: 'seq_db'
 })
 
+const pool = mariadb.createPool({ host: 'localhost',
+    user: 'root',
+    password: '123456',
+    database: 'seq_db' });
+
 exports.listado = (req, res) => {
     db.then(conn => {
         conn.query("select * from Usuarios")
@@ -77,4 +82,16 @@ exports.modificar=  (req, res) => {
  })
        
    };
+
+exports.listado2 = (req, res) => {
+    
+    pool
+       .query("SELECT nombre from Usuarios")
+       .then(rows => {
+        res.json(rows); 
+           })
+       .catch(err => {
+        //handle error
+       });
+};
  
