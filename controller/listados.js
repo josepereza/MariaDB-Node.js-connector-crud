@@ -83,6 +83,7 @@ exports.modificar=  (req, res) => {
        
    };
 
+//ACCEDIENDO A LA BASE DE DATOS CON UN POOL
 exports.listado2 = (req, res) => {
     
     pool
